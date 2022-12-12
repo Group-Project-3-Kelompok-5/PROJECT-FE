@@ -81,18 +81,28 @@ export default function Reservation() {
                     </div>
                     <div className="w-1/4">
                       <select name="cars" id="cars" className="bg-white w-full">
-                        <option value="volvo">1</option>
-                        <option value="saab">2</option>
-                        <option value="mercedes">3</option>
-                        <option value="audi">4</option>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
                       </select>
                     </div>
                     <div className="w-1/4">
                       <select name="cars" id="cars" className="bg-white w-full">
-                        <option value="volvo">2022</option>
-                        <option value="saab">Mastercard</option>
-                        <option value="mercedes">Paypal</option>
-                        <option value="audi">Kidney</option>
+                        <option value="27">2027</option>
+                        <option value="26">2026</option>
+                        <option value="25">2025</option>
+                        <option value="24">2024</option>
+                        <option value="23">2023</option>
+                        <option value="22">2022</option>
                       </select>
                     </div>
                   </div>
