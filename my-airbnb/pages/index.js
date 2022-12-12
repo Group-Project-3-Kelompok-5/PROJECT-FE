@@ -2,11 +2,11 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import Dashboard from './Dashboard'
-import LoginPage from './LoginPage'
-import RegisterPage from './RegisterPage'
-import StayList from './StayList'
-import styles from "../styles/Home.module.css";
+import Dashboard from './dashboard'
+import LoginPage from './loginPage'
+import RegisterPage from './registerPage'
+import StayList from './stayList'
+
 
 
 
@@ -19,7 +19,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="min-h-screen"></main>
+      <main className="min-h-screen">
+        <LoginPage/>
+      </main>
     </div>
   );
 
