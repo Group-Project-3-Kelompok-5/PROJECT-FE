@@ -4,7 +4,7 @@ import Image from 'next/image'
 const RegisterPage = () => {
   return (
     <div className=' h-screen bg-slate-800 items-center flex flex-col sm:flex-row md:flex-row'>
-    <div className=' bg-gray-100 h-screen relative flex md:w-1/2 lg:block lg:w-1/2 hidden lg:block'>
+    <div className=' bg-gray-100 h-screen relative md:w-1/2 lg:w-1/2 hidden lg:block'>
         <Image src='/BanerLogin.jpg' className='hidden lg:block object-cover h-full w-full brightness-50' width={1920} height={1080}/>
         <div className='absolute lg:top-1/3 w-full sm:top-5'>
             <Image src='/hyrule.png' className='object-contain text-center items-center mx-auto' width={100} height={100}/>
