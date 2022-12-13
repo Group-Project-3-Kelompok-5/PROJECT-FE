@@ -1,7 +1,13 @@
+<<<<<<< HEAD:my-airbnb/pages/[user]/edit-user/index.jsx
+import React from "react";
+import Navbar from "../../../components/Navbar";
+import Image from "next/image";
+=======
 import React from 'react'
 import Navbar from '../Components/Navbar'
 import Image from 'next/image'
 import Head from 'next/head'
+>>>>>>> 03d844cdf33e793eb2fba54d1ea4fdc0b9e17604:my-airbnb/pages/edituser.jsx
 
 const edituser = () => {
   return (
