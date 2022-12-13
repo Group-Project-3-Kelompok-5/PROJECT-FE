@@ -16,7 +16,7 @@ const Navbar = () => {
   return (
     <div className='bg-white sticky top-0 px-3 py-5 shadow-md md:border-2 z-50 grid grid-cols-3 items-center '>
         <div className='bg-white  flex align-middle '>
-            <Image src='/logo2.svg' onClick={() => router.push("/dashboard")} className='w-[50px] h-[30px] md:w-[70px] h-[40px] cursor-pointer ' width={91} height={57}/>
+            <Image src='/logo2.svg' onClick={() => router.push("/dashboard")} className='w-[50px] h-[30px] md:w-[70px] md:h-[40px] cursor-pointer ' width={91} height={57}/>
             <label className='hidden md:inline-flex text-2xl pl-2 text-black items-center cursor-pointer' htmlFor="">Hyrule<span className='font-bold'>TRAVEL</span></label>
         </div>
         <div className='flex border-2 rounded-full items-center px-3 py-2 md:ml-3 lg:ml-0'>
