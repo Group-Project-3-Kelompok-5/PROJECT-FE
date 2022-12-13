@@ -10,7 +10,7 @@ const Navbar = () => {
 
   const router = useRouter()
   const search = () => {
-    router.push('/stayList')
+    router.push('/staylist')
   }
 
   return (
