@@ -34,6 +34,16 @@ body {
 
 }
 
+.ruler-atas{
+  width: 90%;
+  border: 1px solid black;
+}
+
+.back-image{
+  background-image: url("../public/userBanner.jpg");
+  object-fit: cover;
+}
+
 a {
   color: inherit;
   text-decoration: none;
