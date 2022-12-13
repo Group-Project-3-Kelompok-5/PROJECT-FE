@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Navbar from "../Components/Navbar";
 
 export default function Reservation() {
   return (
@@ -10,10 +11,8 @@ export default function Reservation() {
       </Head>
       <main>
         <div className="min-h-screen min-w-screen bg-white text-black">
-          <div>
-            <p>Navbar</p>
-          </div>
-          <div className="py-32 px-80">
+          <Navbar />
+          <div className="py-20 px-80">
             <h1 className="text-5xl pb-5">Payment Confirmation</h1>
             <h1 className="text-2xl pb-5">Credit Card</h1>
             <div className="flex flex-row">

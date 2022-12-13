@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Navbar from "../components/Navbar";
 
 export default function History() {
   return (
@@ -9,7 +10,8 @@ export default function History() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div className="p-48">
+        <Navbar />
+        <div className="px-48 pb-48 pt-20">
           <h1 className="text-6xl border-b-2 pb-5">Trip Log</h1>
           <div className="flex flex-col w-full rounded-lg border-2 p-3 mt-5">
             <div>
