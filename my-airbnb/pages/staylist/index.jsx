@@ -1,8 +1,8 @@
 import React from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "../../components/Navbar";
 import Image from "next/image";
 import { AiOutlineStar } from "react-icons/ai";
-import StarRating from "../components/StarRating";
+import StarRating from "../../components/StarRating";
 
 const StayList = () => {
   return (

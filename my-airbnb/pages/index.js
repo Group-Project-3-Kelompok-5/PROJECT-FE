@@ -2,11 +2,51 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Dashboard from "./dashboard";
-import LoginPage from "./login";
 import RegisterPage from "./register";
 import StayList from "./stayList";
+import { useState } from "react";
+import axios from "axios";
+import Cookies from "js-cookie";
+import Swal from "sweetalert2";
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
+
+  // sweetlert
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+  });
+
+  const handleLogin = async () => {
+    await axios
+      .post("https://limagroup.my.id/login", {
+        email: email,
+        password: password,
+      })
+      .then((response) => {
+        Toast.fire({
+          icon: "success",
+          title: "Login berhasil",
+        });
+        Cookies.set("token", response.data.data.token);
+        Cookies.set("nama", response.data.data.name);
+        router.push("/dashboard");
+      })
+      .catch((err) => {
+        Toast.fire({
+          icon: "error",
+          title: "Login gagal",
+        });
+      });
+  };
+
   return (
     <div className="h-100 w-100">
       <Head>
@@ -16,7 +56,76 @@ export default function Home() {
       </Head>
 
       <main className="min-h-screen">
-        <LoginPage />
+        <div className=" h-screen bg-slate-800 items-center flex flex-col sm:flex-row md:flex-row">
+          <div className=" bg-gray-100 h-screen relative md:w-1/2 lg:w-1/2 hidden lg:block">
+            <Image
+              src="/BanerLogin.jpg"
+              className="hidden lg:block object-cover h-full w-full brightness-50"
+              width={1920}
+              height={1080}
+            />
+            <div className="absolute lg:top-1/3 w-full sm:top-5">
+              <Image
+                src="/hyrule.png"
+                className="object-contain text-center items-center mx-auto"
+                width={100}
+                height={100}
+              />
+              <h2 className="text-white text-5xl font-bold text-center">
+                Hyrule Travel
+              </h2>
+              <h3 className="text-white text-4xl font-bold text-center w-[500px] mx-auto mt-5">
+                Find A New Place Where CIA Can't Evene Find It
+              </h3>
+            </div>
+          </div>
+          <div className="items-center mx-auto my-auto lg:static">
+            <div className="items-center my-auto">
+              <div>
+                <form>
+                  <div className="bg-white max-w-96 w-[360px] p-6 rounded-xl shadow-xl">
+                    <div className="flex items-center justify-center mb-4">
+                      <Image src="/logo2.svg" width={100} height={100} />
+                    </div>
+                    <label className="font-semibold text-black" htmlFor="">
+                      Email:
+                    </label>
+                    <input
+                      type="text"
+                      name="email"
+                      className="w-full py-2 bg-gray-200 rounded-xl text-gray-500 px-2 outline-none mb-8"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <label className="font-semibold text-black" htmlFor="">
+                      Password
+                    </label>
+                    <input
+                      type="password"
+                      name="password"
+                      className="w-full py-2 bg-gray-200 rounded-xl text-gray-500 px-2 outline-none mb-8"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <label
+                      className="font-semibold underline text-black"
+                      htmlFor=""
+                    >
+                      Sign Up
+                    </label>
+                    <button
+                      type="button"
+                      className="bg-black w-full text-white py-2 rounded-xl mt-5 font-bold"
+                      onClick={() => handleLogin()}
+                    >
+                      Login
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
     </div>
   );
