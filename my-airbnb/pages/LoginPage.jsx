@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import Head from 'next/head'
 
-const RegisterPage = () => {
+const LoginPage = () => {
   return (
     <div className=' h-screen bg-slate-800 items-center flex flex-col sm:flex-row md:flex-row'>
         <Head>
@@ -31,19 +31,16 @@ const RegisterPage = () => {
                 <input type="text" className='w-full py-2 bg-gray-200 rounded-xl text-gray-500 px-2 outline-none mb-8' />
                 <label className='font-semibold text-black' htmlFor="">Password</label>
                 <input type="password" className='w-full py-2 bg-gray-200 rounded-xl text-gray-500 px-2 outline-none mb-8' />
-                <label className='font-semibold text-black' htmlFor="">Username</label>
-                <input type="password" className='w-full py-2 bg-gray-200 rounded-xl text-gray-500 px-2 outline-none mb-8' />
-                <label className='font-semibold text-black' htmlFor="">Address</label>
-                <input type="password" className='w-full py-2 bg-gray-200 rounded-xl text-gray-500 px-2 outline-none mb-8' />
-                <label className='font-semibold underline text-black' htmlFor="">Sign in</label>
-                <button type='submit' className='bg-black w-full text-white py-2 rounded-xl mt-5 font-bold'>Sign Up</button>
+                <label className='font-semibold underline text-black' htmlFor="">Sign Up</label>
+                <button type='submit' className='bg-black w-full text-white py-2 rounded-xl mt-5 font-bold'>Login</button>
             </div>
         </form>
     </div>
         </div>
+
     </div>
 </div>
   )
 }
 
-export default RegisterPage
+export default LoginPage
