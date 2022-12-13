@@ -1,14 +1,10 @@
-
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import Dashboard from './dashboard'
-import LoginPage from './loginPage'
-import RegisterPage from './registerPage'
-import StayList from './stayList'
-
-
-
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
+import Dashboard from "./dashboard";
+import LoginPage from "./login";
+import RegisterPage from "./register";
+import StayList from "./stayList";
 
 export default function Home() {
   return (
@@ -20,9 +16,8 @@ export default function Home() {
       </Head>
 
       <main className="min-h-screen">
-        <LoginPage/>
+        <LoginPage />
       </main>
     </div>
   );
-
 }
