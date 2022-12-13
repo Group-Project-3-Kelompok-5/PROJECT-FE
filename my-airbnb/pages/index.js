@@ -1,9 +1,5 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
-import Dashboard from "./dashboard";
-import RegisterPage from "./register";
-import StayList from "./stayList";
 import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -75,7 +71,7 @@ export default function Home() {
                 Hyrule Travel
               </h2>
               <h3 className="text-white text-4xl font-bold text-center w-[500px] mx-auto mt-5">
-                Find A New Place Where CIA Can't Evene Find It
+                Find A New Place Where CIA Can't Even Find It
               </h3>
             </div>
           </div>
@@ -110,6 +106,7 @@ export default function Home() {
                     <label
                       className="font-semibold underline text-black"
                       htmlFor=""
+                      onClick={() => router.push("/register")}
                     >
                       Sign Up
                     </label>
