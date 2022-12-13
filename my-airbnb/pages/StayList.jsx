@@ -4,8 +4,10 @@ import Image from 'next/image'
 import {AiOutlineStar} from 'react-icons/ai'
 import StarRating from '../Components/StarRating'
 import Head from 'next/head'
+import axios from 'axios'
 
-const StayList = () => {
+const StayList = ({data}) => {
+  
   return (
         <>
         <div className='bg-white h-screen'>
@@ -26,54 +28,31 @@ const StayList = () => {
         </div>
         <div className="flex bg-white">
         <div className="flex flex-col px-3 py-2 w-screen lg:w-[50%] h-full lg:px-5 rounded-xl">
-          <div className="w-[98%] mb-5 flex pr-5 bg-gray-100 rounded-2xl">
+
+          {data.map(item => (
+            <div className="w-[98%] mb-5 flex pr-5 bg-gray-100 rounded-2xl">
             <div className="relative h-24 w-40 md:h-52 md:w-80 flex-shrink-0">
-              <Image
-                src={"/Bedroom.png"}
-                className="rounded-xl"
-                layout="fill"
-                objectFit="cover"
-              />
+              <img src={item.images[1]} alt="hehe" />
             </div>
             <div className="flex flex-col flex-grow pl-5">
               <div>
                 <h4 className="text-black font-semibold text-md ">
-                  Stay at this Spacious Apartment
+                  {item.title}
                 </h4>
                 <p className="text-black text-sm">
-                  2 Bedroom, 1 Kitchen, 3 Bathroom, 1 Balcony, WiFi, Public Pool
+                  {item.description}
+                </p>
+                <p className='text-black'>
+                    {item.address}
                 </p>
                 <div className="flex items-end justify-end justify-bottom lg:mt-[120px]">
                   <StarRating width={50} />
-                  <p className="text-black pl-2 text-sm">20$ / Night</p>
+                  <p className="text-black pl-2 text-sm">Rp.{item.price} / Night</p>
                 </div>
               </div>
             </div>
           </div>
-          <div className="w-[98%] flex pr-5 bg-gray-100 rounded-2xl">
-            <div className="relative h-24 w-40 md:h-52 md:w-80 flex-shrink-0">
-              <Image
-                src={"/Bedroom.png"}
-                className="rounded-xl"
-                layout="fill"
-                objectFit="cover"
-              />
-            </div>
-            <div className="flex flex-col flex-grow pl-5">
-              <div>
-                <h4 className="text-black font-semibold text-md ">
-                  Stay at this Spacious Apartment
-                </h4>
-                <p className="text-black text-sm">
-                  2 Bedroom, 1 Kitchen, 3 Bathroom, 1 Balcony, WiFi, Public Pool
-                </p>
-                <div className="flex items-end justify-end justify-bottom lg:mt-[120px]">
-                  <StarRating width={50} />
-                  <p className="text-black pl-2 text-sm">20$ / Night</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
         <div className="hidden lg:inline-flex w-[50%] bg-white">
           <Image
@@ -83,12 +62,22 @@ const StayList = () => {
             height={100}
           />
         </div>
+       </div>
       </div>
-      </div>
-
-        </>
+    </>
 
   );
 };
 
 export default StayList;
+
+export async function getServerSideProps() {
+    const getHomeStays = await axios.get(`https://virtserver.swaggerhub.com/HERIBUDIYANA/Air-Bnb/1.0.0/homestays`)
+    const data = getHomeStays.data.data
+    return { 
+        props: {
+            data: data
+        } 
+    }
+  }
+  
