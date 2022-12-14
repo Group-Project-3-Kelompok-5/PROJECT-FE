@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../../Components/Navbar";
 import Image from "next/image";
 import Head from "next/head";
+import Cookies from "js-cookie";
 
 const Dashboard = () => {
   return (
