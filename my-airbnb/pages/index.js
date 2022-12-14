@@ -5,11 +5,18 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import Swal from "sweetalert2";
 import { useRouter } from "next/router";
+import * as yup from "yup";
 
 export default function Home() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
   const router = useRouter();
+
+  //yup schema
+  let schema = yup.object().shape({
+    email: yup.string().required(),
+    password: yup.string().required(),
+  });
 
   // sweetlert
   const Toast = Swal.mixin({
@@ -19,6 +26,17 @@ export default function Home() {
     timer: 3000,
     timerProgressBar: true,
   });
+
+  const checkValidity = () => {
+    schema
+      .isValid({
+        email: email,
+        password: password,
+      })
+      .then((valid) => {
+        handleLogin();
+      });
+  };
 
   const handleLogin = async () => {
     await axios
@@ -31,8 +49,9 @@ export default function Home() {
           icon: "success",
           title: "Login berhasil",
         });
+        console.log(response);
         Cookies.set("token", response.data.data.token);
-        Cookies.set("nama", response.data.data.name);
+        Cookies.set("userid", response.data.data.user_id);
         router.push("/dashboard");
       })
       .catch((err) => {
@@ -113,7 +132,7 @@ export default function Home() {
                     <button
                       type="button"
                       className="bg-black w-full text-white py-2 rounded-xl mt-5 font-bold"
-                      onClick={() => handleLogin()}
+                      onClick={() => checkValidity()}
                     >
                       Login
                     </button>
