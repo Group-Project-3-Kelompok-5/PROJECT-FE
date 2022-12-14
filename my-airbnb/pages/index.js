@@ -71,7 +71,7 @@ export default function Home() {
                 Hyrule Travel
               </h2>
               <h3 className="text-white text-4xl font-bold text-center w-[500px] mx-auto mt-5">
-                Find A New Place Where CIA Can't Even Find It
+                Find A New Place Where CIA Can't Event Find It
               </h3>
             </div>
           </div>

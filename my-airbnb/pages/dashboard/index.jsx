@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../Components/Navbar";
 import Image from "next/image";
 import Head from "next/head";
+import axios from "axios";
+import Cookies from "js-cookie";
+
 
 const Dashboard = () => {
   return (
@@ -115,3 +118,6 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+
+

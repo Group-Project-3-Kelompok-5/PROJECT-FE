@@ -1,9 +1,10 @@
 import React from 'react'
-import Navbar from '../Components/Navbar'
+import Navbar from '../../../Components/Navbar';
 import Image from 'next/image'
 import Head from 'next/head'
 
 const edituser = () => {
+
   return (
     <div>
         <Head>

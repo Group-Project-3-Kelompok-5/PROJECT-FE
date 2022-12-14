@@ -3,15 +3,20 @@ import Image from 'next/image'
 import {BiSearchAlt} from 'react-icons/bi'
 import {BsFillPersonFill} from 'react-icons/bs'
 import {useRouter} from 'next/dist/client/router'
+import Link from 'next/link'
+import {getCookie} from 'cookies-next'
 
 
 
-const Navbar = () => {
+
+const Navbar = ({ids}) => {
+
 
   const router = useRouter()
   const search = () => {
     router.push('/staylist')
   }
+
 
   return (
     <div className='bg-white sticky top-0 px-3 py-5 shadow-md md:border-2 z-50 grid grid-cols-3 items-center '>
@@ -31,9 +36,10 @@ const Navbar = () => {
       </label>
       <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
         <li>
-          <a className="justify-between">
-            Profile
-          </a>
+        <Link href={{
+              pathname: '/user/edit-user',
+              query: ids
+        }} className='text-black'>Profile</Link>
         </li>
         <li><a>Rent Your Home</a></li>
         <li><a>Logout</a></li>
@@ -44,3 +50,13 @@ const Navbar = () => {
 }
 
 export default Navbar
+
+export async function getServerSideProps() {
+  const getHomeStays = await axios.get(`https://virtserver.swaggerhub.com/HERIBUDIYANA/Air-Bnb/1.0.0/users`)
+  const data = getHomeStays.data.data
+  return { 
+      props: {
+          token: req.cookies.token
+      } 
+  }
+}
