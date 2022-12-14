@@ -16,7 +16,6 @@ const edituser = () => {
         <link rel="icon" href="/icon.png" />
       </Head>
       <Navbar
-        profile={() => router.push(`/${name}/edit-user`)}
         host={() => router.push(`/${name}/become-host`)}
         history={() => router.push(`/${name}/history`)}
         dashboard={() => router.push(`/dashboard`)}

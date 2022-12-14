@@ -42,7 +42,6 @@ export default function BecomeHost() {
   return (
     <div className="min-h-screen bg-white text-black">
       <Navbar
-        profile={() => router.push(`/${name}/edit-user`)}
         host={() => router.push(`/${name}/become-host`)}
         history={() => router.push(`/${name}/history`)}
         dashboard={() => router.push(`/dashboard`)}

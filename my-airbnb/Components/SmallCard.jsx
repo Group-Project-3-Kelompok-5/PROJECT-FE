@@ -2,14 +2,15 @@ import React from 'react'
 import StarRating from './StarRating'
 import { useRouter } from 'next/dist/client/router'
 import Link from 'next/link'
+import Image from 'next/image'
 
-const orig = `https://virtserver.swaggerhub.com/HERIBUDIYANA/Air-Bnb/1.0.0/`
+const orig = `https://limagroup.my.id/`
 const SmallCard = ({title, deskripsi, address, images, price, ids}) => {
   return (
     <div>
         <div className="w-[98%] mb-5 flex pr-5 bg-gray-100 rounded-2xl">
             <div className="relative h-24 w-40 md:h-52 md:w-80 flex-shrink-0">
-              <img src={orig+images[0]} width={100} height={100} alt="" />
+              <img src={orig + images[0]} alt="" />
             </div>
             <div className="flex flex-col flex-grow pl-5">
               <div>

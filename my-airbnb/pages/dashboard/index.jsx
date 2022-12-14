@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../Components/Navbar";
 import Image from "next/image";
 import Head from "next/head";
+import axios from "axios";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
+
 
 const Dashboard = () => {
   const name = Cookies.get("name");
@@ -124,3 +126,6 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+
+

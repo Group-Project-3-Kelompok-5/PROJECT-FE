@@ -3,9 +3,13 @@ import Image from "next/image";
 import { BiSearchAlt } from "react-icons/bi";
 import { BsFillPersonFill } from "react-icons/bs";
 import { useRouter } from "next/dist/client/router";
+import Link from "next/link";
+import Cookies from "js-cookie";
 
-const Navbar = ({ profile, host, history, dashboard }) => {
+const Navbar = ({ host, history, dashboard, ids }) => {
   const router = useRouter();
+  const kue = Cookies.get("userid");
+  console.log(kue);
   const search = () => {
     router.push("/staylist");
   };
@@ -54,9 +58,15 @@ const Navbar = ({ profile, host, history, dashboard }) => {
           className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
         >
           <li>
-            <a className="justify-between" onClick={profile}>
-              Profile
-            </a>
+            <Link
+              href={{
+                pathname: "/homestay-detail",
+                query: ids,
+              }}
+              className=""
+            >
+              Edit Profile
+            </Link>
           </li>
           <li>
             <a onClick={host}>Rent Your Home</a>
@@ -74,3 +84,15 @@ const Navbar = ({ profile, host, history, dashboard }) => {
 };
 
 export default Navbar;
+
+export async function getServerSideProps() {
+  const getHomeStays = await axios.get(
+    `https://virtserver.swaggerhub.com/HERIBUDIYANA/Air-Bnb/1.0.0/users`
+  );
+  const data = getHomeStays.data.data;
+  return {
+    props: {
+      token: req.cookies.token,
+    },
+  };
+}

@@ -54,7 +54,6 @@ export default function History({ data }) {
       </Head>
       <main>
         <Navbar
-          profile={() => router.push(`/${name}/edit-user`)}
           host={() => router.push(`/${name}/become-host`)}
           history={() => router.push(`/${name}/history`)}
           dashboard={() => router.push(`/dashboard`)}

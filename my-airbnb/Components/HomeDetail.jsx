@@ -22,7 +22,7 @@ const homeDetail = ({harga, lokasi, title, deskripsi, komentar, gambar}) => {
                 <div className='flex mt-10 px-10'>
                     <div className="w-1/2 border-2 mr-2">
                       <select name="cars" id="cars" className="bg-white w-full text-black">
-                        <option className='text-black' value="01">01</option>
+                        <option className='text-black' value="01">Check In</option>
                         <option className='text-black' value="02">02</option>
                         <option className='text-black' value="03">03</option>
                         <option className='text-black' value="04">04</option>
