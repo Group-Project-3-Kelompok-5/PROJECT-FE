@@ -9,15 +9,21 @@ import Cookies from 'js-cookie'
 
 
 
-const Navbar = ({ids}) => {
-  const kue = Cookies.get("userid")
-  console.log(kue)
-
-
+const Navbar = ({kue}) => {
+  
   const router = useRouter()
   const search = () => {
     router.push("/staylist");
   };
+
+  const onLogout = () => {
+    Cookies.remove("name")
+    Cookies.remove("email")
+    Cookies.remove("address")
+    Cookies.remove("token")
+    Cookies.remove("userid")
+    router.push("/")
+}
 
 
   return (
@@ -65,15 +71,15 @@ const Navbar = ({ids}) => {
         >
           <li>
           <Link href={{
-                    pathname: '/homestay-detail',
-                    query: ids
+                    pathname: '/user/edit-user',
+                    query: kue
                   }} className=''>Edit Profile</Link>
           </li>
           <li>
             <a>Rent Your Home</a>
           </li>
           <li>
-            <a>Logout</a>
+            <a onClick={() => onLogout()}>Logout</a>
           </li>
         </ul>
       </div>

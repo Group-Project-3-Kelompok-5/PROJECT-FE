@@ -3,9 +3,20 @@ import StarRating from './StarRating'
 import { useRouter } from 'next/dist/client/router'
 import Link from 'next/link'
 import Image from 'next/image'
+import Rating from './Rating/Rating'
+import { useState } from 'react'
 
 const orig = `https://limagroup.my.id/`
-const SmallCard = ({title, deskripsi, address, images, price, ids}) => {
+const SmallCard = ({title, deskripsi, address, images, price, ids, rating}) => {
+
+  const [ratingValue, setRatingValue] = useState(undefined);
+
+  const handleRatingAction = (value) => {
+    setRatingValue(value);
+  };
+
+  const angkaRating = rating * 2 * 10
+
   return (
     <div>
         <div className="w-[98%] mb-5 flex pr-5 bg-gray-100 rounded-2xl">
@@ -24,10 +35,15 @@ const SmallCard = ({title, deskripsi, address, images, price, ids}) => {
                     {address}
                 </p>
                 <div className="flex items-end justify-end justify-bottom lg:mt-[120px]">
-                  <StarRating width={50} />
+                <Rating
+                ratingInPercent={angkaRating}
+                iconSize="l"
+                showOutOf={true}
+                enableUserInteraction={false}
+                />
                   <p className="text-black pl-2 text-sm">Rp.{price} / Night</p>
                   <Link href={{
-                    pathname: '/homestay-detail',
+                    pathname: '/reserve-page',
                     query: ids
                   }} className='text-black'>Detail</Link>
                 </div>

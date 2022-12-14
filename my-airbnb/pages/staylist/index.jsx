@@ -11,6 +11,7 @@ import SmallCard from '../../Components/SmallCard'
 const StayList = ({data}) => {
   const orig = `https://virtserver.swaggerhub.com/HERIBUDIYANA/Air-Bnb/1.0.0/`
   const router = useRouter()
+  console.log(data)
    
   
   return (
@@ -42,6 +43,7 @@ const StayList = ({data}) => {
             price = {item.price}
             images = {item.images}
             ids = {item.id}
+            rating = {item.ratting}
             />
           ))}
         </div>
