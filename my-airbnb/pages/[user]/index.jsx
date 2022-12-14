@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import Navbar from "../../components/Navbar";
 
 export default function UserProfile() {
   const router = useRouter();
@@ -6,7 +7,10 @@ export default function UserProfile() {
 
   return (
     <div>
-      <p>{user}</p>
+      <div className="min-h-screen bg-white text-black">
+        <Navbar />
+        <p>{user}</p>
+      </div>
     </div>
   );
 }

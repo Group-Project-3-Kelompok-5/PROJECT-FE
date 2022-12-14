@@ -49,8 +49,9 @@ export default function Home() {
           icon: "success",
           title: "Login berhasil",
         });
+        console.log(response);
         Cookies.set("token", response.data.data.token);
-        Cookies.set("nama", response.data.data.name);
+        Cookies.set("userid", response.data.data.user_id);
         router.push("/dashboard");
       })
       .catch((err) => {

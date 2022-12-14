@@ -25,7 +25,7 @@ export default function History({ data }) {
   const sendFeedback = async (id_homestay) => {
     await axios
       .post(
-        `https://virtserver.swaggerhub.com/HERIBUDIYANA/Air-Bnb/1.0.0/rattings/${id_homestay}`,
+        `https://virtserver.swaggerhub.com/Anti-Gen/PROJECT-BE13/1.0.0/comment`,
         feedback
       )
       .then((response) => {
@@ -38,6 +38,8 @@ export default function History({ data }) {
     newData[e.target.id] = e.target.value;
     setFeedback(newData);
   };
+
+  console.log(feedback);
 
   return (
     <div className="min-h-screen bg-white text-black">
