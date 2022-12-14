@@ -1,7 +1,20 @@
 import Head from "next/head";
 import Navbar from "../../../components/Navbar";
+import axios from "axios";
 
-export default function History() {
+export async function getServerSideProps() {
+  const result = await axios.get(
+    "https://virtserver.swaggerhub.com/HERIBUDIYANA/Air-Bnb/1.0.0/trips"
+  );
+  const data = result.data;
+  return {
+    props: {
+      data: data,
+    },
+  };
+}
+
+export default function History({ data }) {
   return (
     <div className="min-h-screen bg-white text-black">
       <Head>
@@ -13,57 +26,36 @@ export default function History() {
         <Navbar />
         <div className="px-48 pb-48 pt-20">
           <h1 className="text-6xl border-b-2 pb-5">Trip Log</h1>
-          <div className="flex flex-col w-full rounded-lg border-2 p-3 mt-5">
-            <div>
-              <p>Villa Premium A3</p>
-            </div>
-            <div className="flex flex-row pt-3">
-              <p className="font-bold pr-2">
-                Checkin date: <span className="font-normal">Date</span>
-              </p>
-              <p className="font-bold pr-2">
-                Checkout date: <span className="font-normal">Date</span>
-              </p>
-            </div>
-            <div className="pt-2">
-              <p>$25 x 2 night</p>
-              <p>Total Price : $50</p>
-            </div>
-          </div>
-          <div className="flex flex-col w-full rounded-lg border-2 p-3 mt-5">
-            <div>
-              <p>Villa Premium A3</p>
-            </div>
-            <div className="flex flex-row pt-3">
-              <p className="font-bold pr-2">
-                Checkin date: <span className="font-normal">Date</span>
-              </p>
-              <p className="font-bold pr-2">
-                Checkout date: <span className="font-normal">Date</span>
-              </p>
-            </div>
-            <div className="pt-2">
-              <p>$25 x 2 night</p>
-              <p>Total Price : $50</p>
-            </div>
-          </div>
-          <div className="flex flex-col w-full rounded-lg border-2 p-3 mt-5">
-            <div>
-              <p>Villa Premium A3</p>
-            </div>
-            <div className="flex flex-row pt-3">
-              <p className="font-bold pr-2">
-                Checkin date: <span className="font-normal">Date</span>
-              </p>
-              <p className="font-bold pr-2">
-                Checkout date: <span className="font-normal">Date</span>
-              </p>
-            </div>
-            <div className="pt-2">
-              <p>$25 x 2 night</p>
-              <p>Total Price : $50</p>
-            </div>
-          </div>
+          {data.data.map((data) => {
+            return (
+              <div
+                key={data.id_homestay}
+                className="flex flex-col w-full rounded-lg border-2 p-3 mt-5"
+              >
+                <div>
+                  <p>{data.title}</p>
+                </div>
+                <div className="flex flex-row pt-3">
+                  <p className="font-bold pr-2">
+                    Checkin date:{" "}
+                    <span className="font-normal">{data.checkin}</span>
+                  </p>
+                  <p className="font-bold pr-2">
+                    Checkout date:{" "}
+                    <span className="font-normal">{data.checkout}</span>
+                  </p>
+                </div>
+                <div className="pt-2">
+                  <p>
+                    Total Price: <span>{data.total_price}</span>
+                  </p>
+                  <p>
+                    Status: <span>{data.status}</span>
+                  </p>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </main>
     </div>
