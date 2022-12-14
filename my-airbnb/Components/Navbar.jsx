@@ -7,7 +7,7 @@ import { useRouter } from "next/dist/client/router";
 const Navbar = () => {
   const router = useRouter();
   const search = () => {
-    router.push("/stayList");
+    router.push("/staylist");
   };
 
   return (
