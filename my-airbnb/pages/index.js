@@ -52,6 +52,7 @@ export default function Home() {
         console.log(response);
         Cookies.set("token", response.data.data.token);
         Cookies.set("userid", response.data.data.user_id);
+        Cookies.set("name", response.data.data.name);
         router.push("/dashboard");
       })
       .catch((err) => {

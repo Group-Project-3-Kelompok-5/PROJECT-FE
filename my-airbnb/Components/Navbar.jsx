@@ -1,21 +1,29 @@
-import React from 'react'
-import Image from 'next/image'
-import {BiSearchAlt} from 'react-icons/bi'
-import {BsFillPersonFill} from 'react-icons/bs'
-import {useRouter} from 'next/dist/client/router'
-import Link from 'next/link'
-import Cookies from 'js-cookie'
+import React from "react";
+import Image from "next/image";
+import { BiSearchAlt } from "react-icons/bi";
+import { BsFillPersonFill } from "react-icons/bs";
+import { useRouter } from "next/dist/client/router";
+import Link from "next/link";
+import Cookies from "js-cookie";
 
+<<<<<<< HEAD
 
 
 
 const Navbar = ({kue}) => {
   
   const router = useRouter()
+=======
+const Navbar = ({ host, history, dashboard, ids }) => {
+  const router = useRouter();
+  const kue = Cookies.get("userid");
+  console.log(kue);
+>>>>>>> 5a89a9107f23473526f1647390d50d668c1cfbad
   const search = () => {
     router.push("/staylist");
   };
 
+<<<<<<< HEAD
   const onLogout = () => {
     Cookies.remove("name")
     Cookies.remove("email")
@@ -26,12 +34,14 @@ const Navbar = ({kue}) => {
 }
 
 
+=======
+>>>>>>> 5a89a9107f23473526f1647390d50d668c1cfbad
   return (
     <div className="bg-white sticky top-0 px-3 py-5 shadow-md md:border-2 z-50 grid grid-cols-3 items-center ">
       <div className="bg-white  flex align-middle ">
         <Image
           src="/logo2.svg"
-          onClick={() => router.push("/dashboard")}
+          onClick={dashboard}
           className="w-[50px] h-[30px] md:w-[70px] md:h-[40px] cursor-pointer "
           width={91}
           height={57}
@@ -70,13 +80,28 @@ const Navbar = ({kue}) => {
           className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
         >
           <li>
+<<<<<<< HEAD
           <Link href={{
                     pathname: '/user/edit-user',
                     query: kue
                   }} className=''>Edit Profile</Link>
+=======
+            <Link
+              href={{
+                pathname: "/homestay-detail",
+                query: ids,
+              }}
+              className=""
+            >
+              Edit Profile
+            </Link>
+>>>>>>> 5a89a9107f23473526f1647390d50d668c1cfbad
           </li>
           <li>
-            <a>Rent Your Home</a>
+            <a onClick={host}>Rent Your Home</a>
+          </li>
+          <li>
+            <a onClick={history}>History Trip</a>
           </li>
           <li>
             <a onClick={() => onLogout()}>Logout</a>
@@ -87,14 +112,16 @@ const Navbar = ({kue}) => {
   );
 };
 
-export default Navbar
+export default Navbar;
 
 export async function getServerSideProps() {
-  const getHomeStays = await axios.get(`https://virtserver.swaggerhub.com/HERIBUDIYANA/Air-Bnb/1.0.0/users`)
-  const data = getHomeStays.data.data
-  return { 
-      props: {
-          token: req.cookies.token
-      } 
-  }
+  const getHomeStays = await axios.get(
+    `https://virtserver.swaggerhub.com/HERIBUDIYANA/Air-Bnb/1.0.0/users`
+  );
+  const data = getHomeStays.data.data;
+  return {
+    props: {
+      token: req.cookies.token,
+    },
+  };
 }

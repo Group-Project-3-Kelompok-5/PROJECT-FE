@@ -2,6 +2,8 @@ import { useState } from "react";
 import Head from "next/head";
 import Navbar from "../../../components/Navbar";
 import axios from "axios";
+import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 
 export async function getServerSideProps() {
   const result = await axios.get(
@@ -21,6 +23,8 @@ export default function History({ data }) {
     stars: 0,
     comments: "",
   });
+  const name = Cookies.get("name");
+  const router = useRouter();
 
   const sendFeedback = async (id_homestay) => {
     await axios
@@ -49,7 +53,11 @@ export default function History({ data }) {
         <link rel="icon" href="/icon.png" />
       </Head>
       <main>
-        <Navbar />
+        <Navbar
+          host={() => router.push(`/${name}/become-host`)}
+          history={() => router.push(`/${name}/history`)}
+          dashboard={() => router.push(`/dashboard`)}
+        />
         <div className="px-48 pb-48 pt-20">
           <h1 className="text-6xl border-b-2 pb-5">Trip Log</h1>
           {data.data.map((data) => {

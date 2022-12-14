@@ -4,9 +4,15 @@ import Image from "next/image";
 import Head from "next/head";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 
 
 const Dashboard = () => {
+<<<<<<< HEAD
+=======
+  const name = Cookies.get("name");
+  const router = useRouter();
+>>>>>>> 5a89a9107f23473526f1647390d50d668c1cfbad
 
   return (
     <>
@@ -16,6 +22,12 @@ const Dashboard = () => {
         <link rel="icon" href="/icon.png" />
       </Head>
       <Navbar
+<<<<<<< HEAD
+=======
+        profile={() => router.push(`/${name}/edit-user`)}
+        host={() => router.push(`/${name}/become-host`)}
+        history={() => router.push(`/${name}/history`)}
+>>>>>>> 5a89a9107f23473526f1647390d50d668c1cfbad
       />
       <div>
         <div className="relative h-[300px] sm:h-[400px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px] bg-blend-color-burn	bg-black ">
