@@ -1,6 +1,8 @@
 import Navbar from "../../../components/Navbar";
 import { useState } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 
 export default function BecomeHost() {
   const [previewImage, setPreviewImage] = useState();
@@ -10,6 +12,9 @@ export default function BecomeHost() {
   const [address, setAddress] = useState("");
   const [image, setImage] = useState();
   const [status, setStatus] = useState("Available");
+  const name = Cookies.get("name");
+  const token = Cookies.get("token");
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,7 +30,7 @@ export default function BecomeHost() {
     axios
       .post("https://limagroup.my.id/homestays", formData, {
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NzEwMTk3MzUsInJvbGUiOiJVc2VyIiwidXNlcklkIjo1fQ.oco-ZzcIQbO1CZCPNHrt4pT-7gXuPF4q3mG6t-WP7iA`,
+          Authorization: `Bearer ${token}`,
         },
       })
       .then((response) => {
@@ -36,7 +41,12 @@ export default function BecomeHost() {
 
   return (
     <div className="min-h-screen bg-white text-black">
-      <Navbar />
+      <Navbar
+        profile={() => router.push(`/${name}/edit-user`)}
+        host={() => router.push(`/${name}/become-host`)}
+        history={() => router.push(`/${name}/history`)}
+        dashboard={() => router.push(`/dashboard`)}
+      />
       <div className="p-24 m-10 bg-white h-96">
         <p className="font-semibold text-4xl">Become a host</p>
         <div className="flex flex-row mt-2">

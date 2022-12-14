@@ -4,7 +4,7 @@ import { BiSearchAlt } from "react-icons/bi";
 import { BsFillPersonFill } from "react-icons/bs";
 import { useRouter } from "next/dist/client/router";
 
-const Navbar = () => {
+const Navbar = ({ profile, host, history, dashboard }) => {
   const router = useRouter();
   const search = () => {
     router.push("/staylist");
@@ -15,7 +15,7 @@ const Navbar = () => {
       <div className="bg-white  flex align-middle ">
         <Image
           src="/logo2.svg"
-          onClick={() => router.push("/dashboard")}
+          onClick={dashboard}
           className="w-[50px] h-[30px] md:w-[70px] md:h-[40px] cursor-pointer "
           width={91}
           height={57}
@@ -54,10 +54,15 @@ const Navbar = () => {
           className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
         >
           <li>
-            <a className="justify-between">Profile</a>
+            <a className="justify-between" onClick={profile}>
+              Profile
+            </a>
           </li>
           <li>
-            <a>Rent Your Home</a>
+            <a onClick={host}>Rent Your Home</a>
+          </li>
+          <li>
+            <a onClick={history}>History Trip</a>
           </li>
           <li>
             <a>Logout</a>
