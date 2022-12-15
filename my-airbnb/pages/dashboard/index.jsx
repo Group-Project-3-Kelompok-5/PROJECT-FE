@@ -6,7 +6,6 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 
-
 const Dashboard = () => {
   const name = Cookies.get("name");
   const router = useRouter();
@@ -22,7 +21,10 @@ const Dashboard = () => {
         profile={() => router.push(`/${name}/edit-user`)}
         host={() => router.push(`/${name}/become-host`)}
         history={() => router.push(`/${name}/history`)}
+<<<<<<< HEAD
         dashboard={() => router.push(`/dashboard`)}
+=======
+>>>>>>> 4c7270e94ae6c386dd68191265dae7b1f4f6fbbb
       />
       <div>
         <div className="relative h-[300px] sm:h-[400px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px] bg-blend-color-burn	bg-black ">
@@ -127,6 +129,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
-
-

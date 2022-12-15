@@ -10,7 +10,6 @@ const Navbar = ({ host, history, dashboard, ids }) => {
   const router = useRouter();
   const kue = Cookies.get("userid");
   console.log(kue);
-
   const search = () => {
     router.push("/staylist");
   };
@@ -20,13 +19,13 @@ const Navbar = ({ host, history, dashboard, ids }) => {
   }
 
   const onLogout = () => {
-    Cookies.remove("userid")
-    Cookies.remove("name")
-    Cookies.remove("email")
-    Cookies.remove("token")
-    Cookies.remove("address")
-    router.push("/")
-  }
+    Cookies.remove("name");
+    Cookies.remove("email");
+    Cookies.remove("address");
+    Cookies.remove("token");
+    Cookies.remove("userid");
+    router.push("/");
+  };
 
   return (
     <div className="bg-white sticky top-0 px-3 py-5 shadow-md md:border-2 z-50 grid grid-cols-3 items-center ">
