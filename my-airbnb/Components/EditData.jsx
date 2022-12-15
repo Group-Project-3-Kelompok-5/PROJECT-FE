@@ -45,7 +45,7 @@ const EditData = () => {
 
     }
 
-    const deleteUser = async (id) => {
+    const deleteUser = async () => {
       await axios.delete(`https://limagroup.my.id/users/${id}`, config)
       .then(response => {
           alert("Ter Delete")
@@ -63,7 +63,7 @@ const EditData = () => {
         updatedUser();
     }
 
-    const handleDelete = (e) => {
+    const handleDelete = () => {
       deleteUser() 
       Cookies.remove("userid")
       Cookies.remove("name")
@@ -113,7 +113,7 @@ const EditData = () => {
                       <button
                         type="submit"
                         className="bg-black w-full text-white py-2 rounded-xl mt-5 font-bold"
-                        onClick={(id) => handleDelete(id)}
+                        onClick={() => handleDelete()}
                       >
                         Delete User
                       </button>

@@ -4,8 +4,8 @@ import Image from 'next/image'
 const homeDetail = ({harga, lokasi, title, deskripsi, komentar, gambar}) => {
     console.log(gambar)
   return (
-    <div className='w-full h-screen bg-white'>
-        <div className='w-[1000px] mx-auto pt-[100px]'>
+    <div className='w-full h-full bg-white'>
+        <div className='w-[1000px] h-full mx-auto pt-[100px]'>
             <h2 className='text-6xl text-black font-medium'>{title}</h2>
             <div className='flex my-10'>
                 <div>

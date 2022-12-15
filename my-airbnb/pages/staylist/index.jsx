@@ -69,12 +69,7 @@ const StayList = () => {
           ))}
         </div>
         <div className="hidden lg:inline-flex w-[50%] bg-white">
-          <Image
-            src={"/Maps.png"}
-            className="w-screen h-screen object-cover"
-            width={100}
-            height={100}
-          />
+          <img src="/MapsList.jpg" className='object-cover rounded-xl' alt="" />
         </div>
        </div>
       </div>
