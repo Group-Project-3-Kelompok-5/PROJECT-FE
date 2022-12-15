@@ -7,7 +7,8 @@ const nextConfig = {
 };
 
 module.exports = {
-  images: {
+  nextConfig,
+  images : {
     remotePatterns: [
       {
         protocol: "https",

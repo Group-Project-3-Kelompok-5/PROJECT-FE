@@ -1,17 +1,38 @@
 import React from 'react'
 import Navbar from '../../Components/Navbar'
 import Image from 'next/image'
-import {AiOutlineStar} from 'react-icons/ai'
-import StarRating from '../../Components/StarRating'
 import Head from 'next/head'
 import axios from 'axios'
 import { useRouter } from 'next/dist/client/router'
 import SmallCard from '../../Components/SmallCard'
+import { useState } from 'react'
+import { useEffect } from 'react'
+import Cookies from 'js-cookie'
 
-const StayList = ({data}) => {
-  const orig = `https://virtserver.swaggerhub.com/HERIBUDIYANA/Air-Bnb/1.0.0/`
+
+const StayList = () => {
   const router = useRouter()
-  console.log(data)
+  const [stayList, setStayList] = useState('')
+  const token = Cookies.get("token")
+
+  const config = {
+    headers: {Authorization: `Bearer ${token}`}
+  }
+
+  const getStayList = async () => {
+    await axios.get(`https://limagroup.my.id/homestays`, config)
+    .then(response => {
+        setStayList(response.data.data)
+        console.log(response.data.data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
+  useEffect(() => {
+    getStayList()
+  }, [])
    
   
   return (
@@ -35,7 +56,7 @@ const StayList = ({data}) => {
         <div className="flex bg-white">
         <div className="flex flex-col px-3 py-2 w-screen lg:w-[50%] h-full lg:px-5 rounded-xl">
 
-          {data.map(item => (
+          {stayList && stayList.map(item => (
             <SmallCard
             title= {item.title}
             deskripsi = {item.description}
@@ -43,17 +64,12 @@ const StayList = ({data}) => {
             price = {item.price}
             images = {item.images}
             ids = {item.id}
-            rating = {item.ratting}
+            rating = {item.avg_rate}
             />
           ))}
         </div>
         <div className="hidden lg:inline-flex w-[50%] bg-white">
-          <Image
-            src={"/Maps.png"}
-            className="w-screen h-screen object-cover"
-            width={100}
-            height={100}
-          />
+          <img src="/MapsList.jpg" className='object-cover rounded-xl' alt="" />
         </div>
        </div>
       </div>
@@ -64,13 +80,7 @@ const StayList = ({data}) => {
 
 export default StayList;
 
-export async function getServerSideProps() {
-    const getHomeStays = await axios.get(`https://virtserver.swaggerhub.com/HERIBUDIYANA/Air-Bnb/1.0.0/homestays`)
-    const data = getHomeStays.data.data
-    return { 
-        props: {
-            data: data
-        } 
-    }
-  }
+
+
+  
   

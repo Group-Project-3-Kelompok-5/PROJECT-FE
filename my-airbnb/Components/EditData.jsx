@@ -3,27 +3,40 @@ import Cookies from 'js-cookie'
 import { useState } from 'react'
 import axios from 'axios'
 import { useEffect } from 'react'
+import Router from 'next/router'
+import { useRouter } from 'next/router'
 
-const EditData = (userInfo) => {
-    const namamu = Cookies.get("name")
-    const addressmu = Cookies.get("address")
-    const emailmu = Cookies.get("email")
+const EditData = () => {
     const token = Cookies.get("token")
     const id = Cookies.get("userid")
-
-    const [name, setName] = useState(namamu)
-    const [address, setAddress] = useState(addressmu)
-    const [email, setEmail] = useState(emailmu)
+    const router = useRouter()
+    const [name, setName] = useState('')
+    const [address, setAddress] = useState('')
+    const [email, setEmail] = useState('')
+    const [userData, setUserData] = useState('')
 
     const config = {
         headers: {Authorization: `Bearer ${token}`}
       }
     
-
+      const getInfoUsers = async () => {
+        await axios.get(`https://limagroup.my.id/users/${id}`,config)
+            .then(response => {
+                setUserData(response.data.data)
+                setName(response.data.data.name)
+                setEmail(response.data.data.email)
+                setAddress(response.data.data.address)
+                console.log(response.data.data)
+                console.log(name)
+            })
+            .catch(err => console.log(err.response))
+    }
+    
     const updatedUser = async () => {
         await axios.put(`https://limagroup.my.id/users/${id}`, {name, address, email}, config)
         .then(response => {
             alert("Yey")
+            getInfoUsers()
             console.log(response)
         })
         .catch(error => {
@@ -32,14 +45,38 @@ const EditData = (userInfo) => {
 
     }
 
+    const deleteUser = async () => {
+      await axios.delete(`https://limagroup.my.id/users/${id}`, config)
+      .then(response => {
+          alert("Ter Delete")
+          getInfoUsers()
+          console.log(response)
+      })
+      .catch(error => {
+          console.log(error)
+      })
+
+  }
+
     const handleUpdate = (e) => {
-        updatedUser();
         e.preventDefault();
+        updatedUser();
+    }
+
+    const handleDelete = (e) => {
+      e.preventDefault()
+      deleteUser() 
+      Cookies.remove("userid")
+      Cookies.remove("name")
+      Cookies.remove("email")
+      Cookies.remove("token")
+      Cookies.remove("address")
+      router.push("/")
     }
 
     useEffect(() => {
-        updatedUser()
-    }, [])
+      getInfoUsers()
+    }, [])  
     
   return (
 
@@ -61,12 +98,6 @@ const EditData = (userInfo) => {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                       />
-                      <p className="text-black font-bold">Password</p>
-                      <input
-                        type="password"
-                        className="w-full py-2 bg-gray-200 rounded-xl text-gray-500 px-2 outline-none mt-2 mb-4"
-                        value={userInfo.password}
-                      />
                       <p className="text-black font-bold">Address</p>
                       <input
                         type="text"
@@ -79,6 +110,13 @@ const EditData = (userInfo) => {
                         className="bg-black w-full text-white py-2 rounded-xl mt-5 font-bold"
                       >
                         Update Data
+                      </button>
+                      <button
+                        type="submit"
+                        className="bg-black w-full text-white py-2 rounded-xl mt-5 font-bold"
+                        onClick={(e) => handleDelete(e)}
+                      >
+                        Delete User
                       </button>
 
             </form>

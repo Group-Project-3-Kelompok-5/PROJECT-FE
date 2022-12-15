@@ -14,6 +14,10 @@ const Navbar = ({ host, history, dashboard, ids }) => {
     router.push("/staylist");
   };
 
+  const goDashboard = () => {
+    router.push("/dashboard")
+  }
+
   const onLogout = () => {
     Cookies.remove("name");
     Cookies.remove("email");
@@ -28,7 +32,7 @@ const Navbar = ({ host, history, dashboard, ids }) => {
       <div className="bg-white  flex align-middle ">
         <Image
           src="/logo2.svg"
-          onClick={dashboard}
+          onClick={() => goDashboard()}
           className="w-[50px] h-[30px] md:w-[70px] md:h-[40px] cursor-pointer "
           width={91}
           height={57}
@@ -67,15 +71,10 @@ const Navbar = ({ host, history, dashboard, ids }) => {
           className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
         >
           <li>
-            <Link
-              href={{
-                pathname: "/homestay-detail",
-                query: ids,
-              }}
-              className=""
-            >
-              Edit Profile
-            </Link>
+          <Link href={{
+                    pathname: `/user/edit-user`,
+                    query: kue
+                  }} className=''>Edit Profile</Link>
           </li>
           <li>
             <a onClick={host}>Rent Your Home</a>
