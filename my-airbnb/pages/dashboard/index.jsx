@@ -71,7 +71,7 @@ const Dashboard = () => {
             </div>
             <div className="ml-3">
               <h2 className="text-black font-semibold">Bandung</h2>
-              <h3>5 Hour Drive</h3>
+              <h3 className="text-gray-600">5 Hour Drive</h3>
             </div>
           </div>
           <div className="flex items-center m-2 mt-5 space-x-4 rounded-xl cursor-pointer hover:bg-gray-200 hover:scale-105 transition duraton-200 ease out">
@@ -80,7 +80,7 @@ const Dashboard = () => {
             </div>
             <div className="ml-3">
               <h2 className="text-black font-semibold">Pasar Lama</h2>
-              <h3>2 Hour Drive</h3>
+              <h3 className="text-gray-600">2 Hour Drive</h3>
             </div>
           </div>
           <div className="flex items-center m-2 mt-5 space-x-4 rounded-xl cursor-pointer hover:bg-gray-200 hover:scale-105 transition duraton-200 ease out">
@@ -89,7 +89,7 @@ const Dashboard = () => {
             </div>
             <div className="ml-3">
               <h2 className="font-semibold text-black">Semarang</h2>
-              <h3>15 Hour Drive</h3>
+              <h3 className="text-gray-600">15 Hour Drive</h3>
             </div>
           </div>
           <div className="flex items-center m-2 mt-5 space-x-4 rounded-xl cursor-pointer hover:bg-gray-200 hover:scale-105 transition duraton-200 ease out">
@@ -98,7 +98,7 @@ const Dashboard = () => {
             </div>
             <div className="ml-3">
               <h2 className="font-semibold text-black">Yogyakarta</h2>
-              <h3>1 Hour Drive</h3>
+              <h3 className="text-gray-600">1 Hour Drive</h3>
             </div>
           </div>
           <div className="flex items-center m-2 mt-5 space-x-4 rounded-xl cursor-pointer hover:bg-gray-200 hover:scale-105 transition duraton-200 ease out">
@@ -107,7 +107,7 @@ const Dashboard = () => {
             </div>
             <div className="ml-3">
               <h2 className="font-semibold text-black">Blok M</h2>
-              <h3>2 Hour Drive</h3>
+              <h3 className="text-gray-600">2 Hour Drive</h3>
             </div>
           </div>
           <div className="flex items-center m-2 mt-5 space-x-4 rounded-xl cursor-pointer hover:bg-gray-200 hover:scale-105 transition duraton-200 ease out">
@@ -116,7 +116,7 @@ const Dashboard = () => {
             </div>
             <div className="ml-3">
               <h2 className="font-semibold text-black">Tanggerang Selatan</h2>
-              <h3>1 Hour Drive</h3>
+              <h3 className="text-gray-600">1 Hour Drive</h3>
             </div>
           </div>
         </div>

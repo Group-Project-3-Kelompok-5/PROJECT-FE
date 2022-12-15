@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@badrap/bar-of-progress": "^0.2.2",
     "axios": "^1.2.1",
     "cookie": "^0.5.0",
     "cookies-next": "^2.1.1",

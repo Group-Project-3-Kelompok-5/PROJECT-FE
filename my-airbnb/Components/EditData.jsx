@@ -63,7 +63,8 @@ const EditData = () => {
         updatedUser();
     }
 
-    const handleDelete = () => {
+    const handleDelete = (e) => {
+      e.preventDefault()
       deleteUser() 
       Cookies.remove("userid")
       Cookies.remove("name")
@@ -113,7 +114,7 @@ const EditData = () => {
                       <button
                         type="submit"
                         className="bg-black w-full text-white py-2 rounded-xl mt-5 font-bold"
-                        onClick={() => handleDelete()}
+                        onClick={(e) => handleDelete(e)}
                       >
                         Delete User
                       </button>

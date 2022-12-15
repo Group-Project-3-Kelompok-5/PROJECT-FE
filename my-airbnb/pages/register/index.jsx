@@ -136,7 +136,7 @@ const RegisterPage = () => {
                 </label>
                 <button
                   type="button"
-                  className="bg-black w-full text-white py-2 rounded-xl mt-5 font-bold"
+                  className="bg-black w-full text-white py-2 rounded-xl mt-5 font-bold cursor-pointer hover:shadow-xl active:bg-black transition transform duration-100 ease-out active:scale-95"
                   onClick={() => handleRegister()}
                 >
                   Sign Up
