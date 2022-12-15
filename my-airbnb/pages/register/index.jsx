@@ -29,7 +29,7 @@ const RegisterPage = () => {
 
   const handleRegister = async () => {
     await axios
-      .post("https://limagroup.my.id/user", data, {
+      .post("https://limagroup.my.id/users", data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

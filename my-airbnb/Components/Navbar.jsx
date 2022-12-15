@@ -6,42 +6,34 @@ import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import Cookies from "js-cookie";
 
-<<<<<<< HEAD
-
-
-
-const Navbar = ({kue}) => {
-  
-  const router = useRouter()
-=======
 const Navbar = ({ host, history, dashboard, ids }) => {
   const router = useRouter();
   const kue = Cookies.get("userid");
   console.log(kue);
->>>>>>> 5a89a9107f23473526f1647390d50d668c1cfbad
+
   const search = () => {
     router.push("/staylist");
   };
 
-<<<<<<< HEAD
+  const goDashboard = () => {
+    router.push("/dashboard")
+  }
+
   const onLogout = () => {
+    Cookies.remove("userid")
     Cookies.remove("name")
     Cookies.remove("email")
-    Cookies.remove("address")
     Cookies.remove("token")
-    Cookies.remove("userid")
+    Cookies.remove("address")
     router.push("/")
-}
+  }
 
-
-=======
->>>>>>> 5a89a9107f23473526f1647390d50d668c1cfbad
   return (
     <div className="bg-white sticky top-0 px-3 py-5 shadow-md md:border-2 z-50 grid grid-cols-3 items-center ">
       <div className="bg-white  flex align-middle ">
         <Image
           src="/logo2.svg"
-          onClick={dashboard}
+          onClick={() => goDashboard()}
           className="w-[50px] h-[30px] md:w-[70px] md:h-[40px] cursor-pointer "
           width={91}
           height={57}
@@ -80,22 +72,10 @@ const Navbar = ({ host, history, dashboard, ids }) => {
           className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
         >
           <li>
-<<<<<<< HEAD
           <Link href={{
-                    pathname: '/user/edit-user',
+                    pathname: `/user/edit-user`,
                     query: kue
                   }} className=''>Edit Profile</Link>
-=======
-            <Link
-              href={{
-                pathname: "/homestay-detail",
-                query: ids,
-              }}
-              className=""
-            >
-              Edit Profile
-            </Link>
->>>>>>> 5a89a9107f23473526f1647390d50d668c1cfbad
           </li>
           <li>
             <a onClick={host}>Rent Your Home</a>

@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images : {
-    domains : ['virtserver.swaggerhub.com']
+    domains : ['storage.googleapis.com']
   }
 }
 
@@ -10,7 +10,14 @@ const nextConfig = {
 module.exports = {
   nextConfig,
   images : {
-    domains : ['virtserver.swaggerhub.com']
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "storage.googleapis.com",
+        port: "",
+        pathname: "/project-3/**"
+      }
+    ]
   }
   
 }
