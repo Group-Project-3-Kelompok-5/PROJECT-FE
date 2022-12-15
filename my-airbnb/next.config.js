@@ -1,11 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  images : {
-    domains : ['storage.googleapis.com']
-  }
-}
-
+  images: {
+    domains: ["virtserver.swaggerhub.com"],
+  },
+};
 
 module.exports = {
   nextConfig,
@@ -15,9 +14,8 @@ module.exports = {
         protocol: "https",
         hostname: "storage.googleapis.com",
         port: "",
-        pathname: "/project-3/**"
-      }
-    ]
-  }
-  
-}
+        pathname: "/project-3/**",
+      },
+    ],
+  },
+};

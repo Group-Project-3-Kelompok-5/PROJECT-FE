@@ -26,6 +26,7 @@ const RegisterPage = () => {
     const newData = { ...data };
     newData[e.target.id] = e.target.value;
     setData(newData);
+    console.log(newData);
   };
 
   const handleRegister = async () => {
@@ -42,12 +43,13 @@ const RegisterPage = () => {
         });
         router.push("/");
       })
-      .catch((err) =>
+      .catch((err) => {
+        console.log(err);
         Toast.fire({
           icon: "error",
           title: "Register gagal",
-        })
-      );
+        });
+      });
   };
 
   return (
