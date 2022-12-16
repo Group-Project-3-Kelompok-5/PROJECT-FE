@@ -35,7 +35,7 @@ const EditData = () => {
     const updatedUser = async () => {
         await axios.put(`https://limagroup.my.id/users/${id}`, {name, address, email}, config)
         .then(response => {
-            alert("Yey")
+            alert("Data ter Update")
             getInfoUsers()
             console.log(response)
         })
@@ -107,13 +107,13 @@ const EditData = () => {
                       />
                       <button
                         type="submit"
-                        className="bg-black w-full text-white py-2 rounded-xl mt-5 font-bold"
+                        className="bg-black w-full text-white py-2 rounded-xl mt-5 font-bold cursor-pointer hover:shadow-xl active:bg-black transition transform duration-100 ease-out active:scale-95"
                       >
                         Update Data
                       </button>
                       <button
                         type="submit"
-                        className="bg-black w-full text-white py-2 rounded-xl mt-5 font-bold"
+                        className="bg-red-800 w-full text-white py-2 rounded-xl mt-5 font-bold cursor-pointer hover:shadow-xl active:bg-red-900 transition transform duration-100 ease-out active:scale-95"
                         onClick={(e) => handleDelete(e)}
                       >
                         Delete User

@@ -27,6 +27,7 @@ const SmallCard = ({title, deskripsi, address, images, price, ids, rating}) => {
   }
 
   const angkaRating = rating * 2 * 10
+  console.log(images)
 
   return (
     <div>
