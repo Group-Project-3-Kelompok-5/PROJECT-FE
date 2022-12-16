@@ -2,48 +2,63 @@ import { useState } from "react";
 import Head from "next/head";
 import Navbar from "../../../components/Navbar";
 import axios from "axios";
-import Cookies from "js-cookie";
 import { useRouter } from "next/router";
+import Cookies from "js-cookie";
+import { useEffect } from "react";
 
-export async function getServerSideProps() {
-  const result = await axios.get(
-    "https://virtserver.swaggerhub.com/HERIBUDIYANA/Air-Bnb/1.0.0/trips"
-  );
-  const data = result.data;
-  return {
-    props: {
-      data: data,
-    },
-  };
-}
-
-export default function History({ data }) {
+export default function History() {
   const [feedback, setFeedback] = useState({
-    id_homestay: 0,
     stars: 0,
     comments: "",
   });
+
+  const [stars, setStars] = useState();
+  const [comment, setComments] = useState();
+  const [homestayData, setHomestayData] = useState();
   const name = Cookies.get("name");
+  const token = Cookies.get("token");
   const router = useRouter();
+
+  const getAllHomestay = async () => {
+    axios
+      .get("https://limagroup.my.id/homestays", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setHomestayData(response.data.data);
+        console.log(response.data.data);
+      })
+      .catch((err) => console.log(err));
+  };
 
   const sendFeedback = async (id_homestay) => {
     await axios
       .post(
-        `https://virtserver.swaggerhub.com/Anti-Gen/PROJECT-BE13/1.0.0/comment`,
-        feedback
+        `https://limagroup.my.id/comments`,
+        {
+          homestay_id: id_homestay,
+          ratings: parseInt(stars),
+          notes: comment,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       )
       .then((response) => {
         console.log(response);
       });
   };
 
-  const handleChange = (e) => {
-    const newData = { ...feedback };
-    newData[e.target.id] = e.target.value;
-    setFeedback(newData);
-  };
-
   console.log(feedback);
+  console.log(homestayData);
+
+  useEffect(() => {
+    getAllHomestay();
+  }, []);
 
   return (
     <div className="min-h-screen bg-white text-black">
@@ -60,7 +75,7 @@ export default function History({ data }) {
         />
         <div className="px-48 pb-48 pt-20">
           <h1 className="text-6xl border-b-2 pb-5">Trip Log</h1>
-          {data.data.map((data) => {
+          {homestayData?.map((data) => {
             return (
               <div
                 key={data.id_homestay}
@@ -83,9 +98,9 @@ export default function History({ data }) {
                   <p>
                     Total Price: <span>{data.total_price}</span>
                   </p>
-                  <p>
+                  {/* <p>
                     Status: <span>{data.status}</span>
-                  </p>
+                  </p> */}
                   <label htmlFor="my-modal" className="btn mt-5 text-white">
                     FEEDBACK
                   </label>
@@ -103,20 +118,20 @@ export default function History({ data }) {
                         placeholder="How do you feel?"
                         id="comments"
                         className="input input-bordered w-full max-w-xs bg-white"
-                        onChange={(e) => handleChange(e)}
+                        onChange={(e) => setComments(e.target.value)}
                       />
                       <input
                         type="number"
                         placeholder="Stars"
                         id="stars"
                         className="input input-ghost w-full max-w-xs"
-                        onChange={(e) => handleChange(e)}
+                        onChange={(e) => setStars(e.target.value)}
                       />
                       <div className="modal-action">
                         <label
                           htmlFor="my-modal"
                           className="btn"
-                          onClick={() => sendFeedback(data.id_homestay)}
+                          onClick={() => sendFeedback(data.id)}
                         >
                           Feedback
                         </label>
