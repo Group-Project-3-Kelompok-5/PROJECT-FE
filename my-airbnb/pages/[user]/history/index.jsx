@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Head from "next/head";
-import Navbar from "../../../components/Navbar";
+import Navbar from "../../../Components/Navbar"
 import axios from "axios";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
