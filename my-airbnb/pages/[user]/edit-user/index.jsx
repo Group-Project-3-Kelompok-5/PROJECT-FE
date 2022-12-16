@@ -6,44 +6,39 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
-import { useCookies } from 'react-cookie'
+import { useCookies } from "react-cookie";
 import Cookies from "js-cookie";
 import EditData from "../../../Components/EditData";
 import Router from "next/router";
 
+const edituser = ({ data }) => {
+  const [cookies, setCookies] = useCookies();
+  const [userInfo, setUserInfo] = useState("");
+  const router = useRouter();
 
-const edituser = ({data}) => {
-  const [cookies, setCookies]  = useCookies()
-  const [userInfo, setUserInfo] = useState('')
-  const router = useRouter()
+  const name = Cookies.get("name");
+  const userId = Cookies.get("userid");
+  const token = Cookies.get("token");
 
-
-  const userId = Cookies.get("userid")
-  const token = Cookies.get("token")
-
-  console.log(token)
+  console.log(token);
 
   const config = {
-    headers: {Authorization: `Bearer ${token}`}
-  }
-
+    headers: { Authorization: `Bearer ${token}` },
+  };
 
   const getInfoUsers = async () => {
-    await axios.get(`https://limagroup.my.id/users/${userId}`,config)
-        .then(response => {
-            setUserInfo(response.data.data)
-            console.log(response)
-        })
-        .catch(err => console.log(err.response))
-}
-
+    await axios
+      .get(`https://limagroup.my.id/users/${userId}`, config)
+      .then((response) => {
+        setUserInfo(response.data.data);
+        console.log(response);
+      })
+      .catch((err) => console.log(err.response));
+  };
 
   useEffect(() => {
-    getInfoUsers()
-  }, [])
-
- 
-  
+    getInfoUsers();
+  }, []);
 
   return (
     <div>
@@ -66,33 +61,31 @@ const edituser = ({data}) => {
         <div className="items-center mx-auto my-auto lg:static">
           <div className="items-center my-auto">
             <div>
-                <div className="bg-white max-w-96 w-[630px] absolute top-1/4 right-1/3 p-6 rounded-xl shadow-xl">
-                  <div className="flex items-center justify-center mb-4">
-                    <Image src="/logo2.svg" width={100} height={100} />
-                  </div>
-                  <div className="grid grid-cols-2">
-                    <div>
-                      <Image
-                        src={"/Default.svg"}
-                        className="align-middle mx-auto"
-                        width={100}
-                        height={100}
-                      />
-                      <h3 className="text-black font-semibold px-5 my-3 text-center">
-                        {userInfo.name}
-                      </h3>
-                      <h4 className="text-black font-semibold px-5 my-3 text-center">
-                        {userInfo.email}
-                      </h4>
-                      <h4 className="text-black font-semibold px-5 my-3 text-center">
-                        {userInfo.address}
-                      </h4>
-                    </div>
-                    <EditData
-                    userInfo = {userInfo}
-                    />
-                  </div>
+              <div className="bg-white max-w-96 w-[630px] absolute top-1/4 right-1/3 p-6 rounded-xl shadow-xl">
+                <div className="flex items-center justify-center mb-4">
+                  <Image src="/logo2.svg" width={100} height={100} />
                 </div>
+                <div className="grid grid-cols-2">
+                  <div>
+                    <Image
+                      src={"/Default.svg"}
+                      className="align-middle mx-auto"
+                      width={100}
+                      height={100}
+                    />
+                    <h3 className="text-black font-semibold px-5 my-3 text-center">
+                      {userInfo.name}
+                    </h3>
+                    <h4 className="text-black font-semibold px-5 my-3 text-center">
+                      {userInfo.email}
+                    </h4>
+                    <h4 className="text-black font-semibold px-5 my-3 text-center">
+                      {userInfo.address}
+                    </h4>
+                  </div>
+                  <EditData userInfo={userInfo} />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -102,4 +95,3 @@ const edituser = ({data}) => {
 };
 
 export default edituser;
-
