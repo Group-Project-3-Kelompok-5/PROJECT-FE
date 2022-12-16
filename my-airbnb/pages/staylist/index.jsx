@@ -23,10 +23,6 @@ const StayList = () => {
       .get(`https://limagroup.my.id/homestays`, config)
       .then((response) => {
         setStayList(response.data.data);
-        console.log(response.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
       });
   };
 
@@ -78,7 +74,11 @@ const StayList = () => {
           </div>
         </div>
         <div className="hidden lg:inline-flex w-[50%] bg-white">
-          <img src="/MapsList.jpg" className='object-cover rounded-xl' alt="Maps" />
+          <img
+            src="/MapsList.jpg"
+            className="object-cover rounded-xl"
+            alt="Maps"
+          />
         </div>
       </div>
     </>

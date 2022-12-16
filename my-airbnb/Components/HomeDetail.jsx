@@ -22,10 +22,6 @@ const homeDetail = ({
       .then((response) => {
         alert("Yey");
         getInfoUsers();
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
       });
   };
 
