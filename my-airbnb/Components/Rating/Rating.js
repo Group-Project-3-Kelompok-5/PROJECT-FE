@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { string, number, func, bool } from "prop-types";
 import defaultClasses from "./rating.module.css";
-import IconComponent from "../IconComponent/iconComponent";
+import IconComponent from "../iconComponent/iconComponent"
 
 const SIZES = {
   SMALL: {

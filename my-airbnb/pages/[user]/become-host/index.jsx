@@ -1,4 +1,4 @@
-import Navbar from "../../../components/Navbar";
+import Navbar from "../../../Components/Navbar";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
