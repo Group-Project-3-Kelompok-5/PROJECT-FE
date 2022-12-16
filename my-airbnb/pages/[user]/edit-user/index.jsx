@@ -11,7 +11,7 @@ import Cookies from "js-cookie";
 import EditData from "../../../Components/EditData";
 import Router from "next/router";
 
-const edituser = ({ data }) => {
+const Edituser = ({ data }) => {
   const [cookies, setCookies] = useCookies();
   const [userInfo, setUserInfo] = useState("");
   const router = useRouter();
@@ -94,4 +94,4 @@ const edituser = ({ data }) => {
   );
 };
 
-export default edituser;
+export default Edituser;
