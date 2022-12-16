@@ -77,13 +77,9 @@ const StayList = () => {
             />
           </div>
         </div>
-<<<<<<< HEAD
-=======
         <div className="hidden lg:inline-flex w-[50%] bg-white">
           <img src="/MapsList.jpg" className='object-cover rounded-xl' alt="Maps" />
         </div>
-       </div>
->>>>>>> d94d0acafa6d44a623c971d2099e869692378f10
       </div>
     </>
   );
