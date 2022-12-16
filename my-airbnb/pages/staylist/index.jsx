@@ -69,7 +69,7 @@ const StayList = () => {
           ))}
         </div>
         <div className="hidden lg:inline-flex w-[50%] bg-white">
-          <img src="/MapsList.jpg" className='object-cover rounded-xl' alt="" />
+          <img src="/MapsList.jpg" className='object-cover rounded-xl' alt="Maps" />
         </div>
        </div>
       </div>

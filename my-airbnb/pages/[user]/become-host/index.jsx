@@ -5,6 +5,7 @@ import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import Swal from "sweetalert2";
 import Image from "next/image";
+import Head from "next/head";
 
 export default function BecomeHost() {
   const [previewImage, setPreviewImage] = useState();

@@ -2,30 +2,18 @@ import React from 'react'
 import Image from 'next/image'
 
 const homeDetail = ({harga, lokasi, title, deskripsi, komentar, gambar}) => {
-  const bookingRoom = async () => {
-    await axios.post(`https://limagroup.my.id/users/${id}`, {checkin, checkout}, config)
-    .then(response => {
-        alert("Yey")
-        getInfoUsers()
-        console.log(response)
-    })
-    .catch(error => {
-        console.log(error)
-    })
-
-}
 
   return (
-    <div className='w-full h-screen bg-white'>
+    <div className='w-full min-h-full h-screen bg-white'>
         <div className='w-[1000px] h-full mx-auto pt-[100px]'>
             <h2 className='text-6xl text-black font-medium'>{title}</h2>
             <div className='flex my-10'>
                 <div>
-                    <Image className='mr-4 rounded-xl' src={gambar} width={615} height={300}/>
+                <Image className='mr-4 rounded-xl' alt="gambar" src={gambar} width={615} height={300}/>
                 </div>
                 <div>
-                <Image className='mb-2 rounded-xl' src={gambar} width={300} height={100}/>
-                <Image className='mt-2 rounded-xl' src={gambar} width={300} height={100}/>
+                <Image className='mb-2 rounded-xl' alt="gambar" src={gambar} width={300} height={100}/>
+                <Image className='mt-2 rounded-xl' alt="gambar" src={gambar} width={300} height={100}/>
                 </div>
             </div>
             <h3 className='text-black font-semibold text-2xl capitalize w-[350px]'>{deskripsi}</h3>
