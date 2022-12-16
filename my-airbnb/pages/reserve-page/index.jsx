@@ -7,7 +7,7 @@ import HomeDetail from "../../Components/HomeDetail";
 import Cookies from "js-cookie";
 import Head from "next/head";
 
-const detailhomestay = () => {
+const Detailhomestay = () => {
   const [homestayDetail, setHomestayDetails] = useState([]);
   const [checkin, setCheckin] = useState();
   const [checkout, setCheckout] = useState();
@@ -127,4 +127,4 @@ const detailhomestay = () => {
   );
 };
 
-export default detailhomestay;
+export default Detailhomestay;
