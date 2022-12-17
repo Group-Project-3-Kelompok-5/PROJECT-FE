@@ -9,14 +9,13 @@ import Cookies from "js-cookie";
 const Navbar = ({ host, history, dashboard, ids }) => {
   const router = useRouter();
   const kue = Cookies.get("userid");
-  console.log(kue);
   const search = () => {
     router.push("/staylist");
   };
 
   const goDashboard = () => {
-    router.push("/dashboard")
-  }
+    router.push("/dashboard");
+  };
 
   const onLogout = () => {
     Cookies.remove("name");
@@ -71,10 +70,15 @@ const Navbar = ({ host, history, dashboard, ids }) => {
           className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
         >
           <li>
-          <Link href={{
-                    pathname: `/user/edit-user`,
-                    query: kue
-                  }} className=''>Edit Profile</Link>
+            <Link
+              href={{
+                pathname: `/user/edit-user`,
+                query: kue,
+              }}
+              className=""
+            >
+              Edit Profile
+            </Link>
           </li>
           <li>
             <a onClick={host}>Rent Your Home</a>

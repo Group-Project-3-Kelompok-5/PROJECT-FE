@@ -20,8 +20,6 @@ const Edituser = ({ data }) => {
   const userId = Cookies.get("userid");
   const token = Cookies.get("token");
 
-  console.log(token);
-
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
@@ -31,9 +29,7 @@ const Edituser = ({ data }) => {
       .get(`https://limagroup.my.id/users/${userId}`, config)
       .then((response) => {
         setUserInfo(response.data.data);
-        console.log(response);
-      })
-      .catch((err) => console.log(err.response));
+      });
   };
 
   useEffect(() => {

@@ -38,7 +38,6 @@ export default function BecomeHost() {
     formData.append("price", price);
     formData.append("address", address);
     formData.append("status", status);
-    console.log([...formData]);
 
     axios
       .post("https://limagroup.my.id/homestays", formData, {
@@ -48,7 +47,6 @@ export default function BecomeHost() {
         },
       })
       .then((response) => {
-        console.log(response.data);
         Toast.fire({
           icon: "success",
           title: "Berhasil menambahkan homestay",
@@ -58,7 +56,6 @@ export default function BecomeHost() {
         }, 3500);
       })
       .catch((err) => {
-        console.log(err);
         Toast.fire({
           icon: "error",
           title: "Gagal menambahkan homestay",
@@ -75,9 +72,7 @@ export default function BecomeHost() {
       })
       .then((response) => {
         setYourHomestay(response.data.data);
-        console.log(yourHomestay);
-      })
-      .catch((err) => console.log(err));
+      });
   };
 
   const deleteHomestay = async (id, e) => {
@@ -95,15 +90,11 @@ export default function BecomeHost() {
         setTimeout(() => {
           window.location.reload();
         }, 2000);
-      })
-      .catch((err) => {
-        console.log(err);
       });
   };
 
   //handle image upload
   const handleFile = (file) => {
-    console.log(file);
     setImage(file);
     const reader = new FileReader();
     reader.onloadend = () => {
@@ -117,8 +108,6 @@ export default function BecomeHost() {
     const newData = { ...selectedHomestay };
     newData[e.target.id] = e.target.value;
     setSelectedHomestay(newData);
-
-    console.log(newData);
   };
 
   const sendEditHomestay = async (id) => {
@@ -127,12 +116,9 @@ export default function BecomeHost() {
     formData.append("description", selectedHomestay.description);
     formData.append("price", selectedHomestay.price);
     formData.append("address", selectedHomestay.address);
-    await axios
-      .put(`https://limagroup.my.id/homestays/${id}`, formData, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => console.log(response))
-      .catch((err) => console.log(err));
+    await axios.put(`https://limagroup.my.id/homestays/${id}`, formData, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
   };
 
   useEffect(() => {
@@ -162,7 +148,6 @@ export default function BecomeHost() {
                 type="text"
                 id="title"
                 name="title"
-                placeholder="Rumah Mewah"
                 onChange={(e) => setTitle(e.target.value)}
               />
               <label for="desc">Deskripsi:</label>
@@ -171,7 +156,6 @@ export default function BecomeHost() {
                 type="text"
                 id="desc"
                 name="desc"
-                placeholder="3 kamar tidur, 2 kamar mandi dalam, wifi 24 jam tanpa henti, lingkungan asri"
                 onChange={(e) => setDescription(e.target.value)}
               />
               <label for="price">Price</label>
@@ -180,7 +164,6 @@ export default function BecomeHost() {
                 type="text"
                 id="price"
                 name="price"
-                placeholder="999999"
                 onChange={(e) => setPrice(e.target.value)}
               />
               <label htmlfor="address">Address</label>
@@ -189,7 +172,6 @@ export default function BecomeHost() {
                 type="text"
                 id="address"
                 name="address"
-                placeholder="Jln. Angsa No.20B, Kalimantan Utara"
                 onChange={(e) => setAddress(e.target.value)}
               />
               <label
@@ -250,7 +232,6 @@ export default function BecomeHost() {
                         className="btn m-2 w-40"
                         onClick={() => {
                           setSelectedHomestay(homestay);
-                          console.log(selectedHomestay);
                         }}
                       >
                         EDIT HOMESTAY

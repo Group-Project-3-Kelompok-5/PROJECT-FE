@@ -16,41 +16,28 @@ const Detailhomestay = () => {
   const token = Cookies.get("token");
   const router = useRouter();
   const details = router?.query?.ids;
-  console.log(router?.query?.ids);
-  console.log(details);
 
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
 
   const orderHomestay = async () => {
-    console.log(checkin);
-    console.log(checkout);
-    await axios
-      .post(
-        `https://limagroup.my.id/reserves`,
-        {
-          homestay_id: details,
-          check_in: checkin,
-          check_out: checkout,
-        },
-        config
-      )
-      .then((response) => console.log(response))
-      .catch((err) => {
-        console.log(err);
-      });
+    await axios.post(
+      `https://limagroup.my.id/reserves`,
+      {
+        homestay_id: details,
+        check_in: checkin,
+        check_out: checkout,
+      },
+      config
+    );
   };
 
   const get_Details = async () => {
     await axios
       .get(`https://limagroup.my.id/homestays/${details}`, config)
       .then((response) => {
-        console.log(response.data.data);
         setHomestayDetails(response.data.data);
-      })
-      .catch((error) => {
-        console.log(error);
       });
   };
 

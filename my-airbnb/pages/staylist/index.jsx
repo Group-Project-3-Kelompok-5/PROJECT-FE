@@ -23,10 +23,6 @@ const StayList = () => {
       .get(`https://limagroup.my.id/homestays`, config)
       .then((response) => {
         setStayList(response.data.data);
-        console.log(response.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
       });
   };
 

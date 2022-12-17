@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Head from "next/head";
-import Navbar from "../../../Components/Navbar"
+import Navbar from "../../../Components/Navbar";
 import axios from "axios";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
@@ -112,19 +112,21 @@ export default function History() {
                   <div className="modal text-black">
                     <div className="modal-box bg-white shadow-xl">
                       <h3 className="font-bold text-lg">Feedback</h3>
-                      <p className="py-4">Tiada kesan tanpa kehadiranmu</p>
+                      <p className="py-4">Add feedback</p>
                       <input
                         type="text"
-                        placeholder="How do you feel?"
+                        placeholder="Beri masukan"
                         id="comments"
-                        className="input input-bordered w-full max-w-xs bg-white"
+                        className="input input-bordered w-full bg-white"
                         onChange={(e) => setComments(e.target.value)}
                       />
                       <input
                         type="number"
                         placeholder="Stars"
                         id="stars"
-                        className="input input-ghost w-full max-w-xs"
+                        max={5}
+                        min={1}
+                        className="input input-ghost w-full"
                         onChange={(e) => setStars(e.target.value)}
                       />
                       <div className="modal-action">
