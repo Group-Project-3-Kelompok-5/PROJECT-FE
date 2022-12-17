@@ -29,8 +29,10 @@ const homeDetail = ({
       });
   };
 
+  console.log(komentar)
+
   return (
-    <div className="w-full h-screen bg-white">
+    <div className="w-full min-h-full bg-white">
       <div className="w-[1000px] h-full mx-auto pt-[100px]">
         <h2 className="text-6xl text-black font-medium">{title}</h2>
         <div className="flex my-10">
@@ -60,8 +62,19 @@ const homeDetail = ({
         <h3 className="text-black font-semibold text-2xl capitalize w-[350px]">
           {deskripsi}
         </h3>
-        <h4 className="text-black font-medium text-xl">{komentar}</h4>
-        <h4 className="text-black font-medium text-xl">{lokasi}</h4>
+        <h4 className="text-black font-medium text-2xl py-2">Comments :</h4>
+        {komentar &&
+              komentar.map(komen => {
+                     return (
+                      <div>
+                          <h4 className="text-black font-medium text-xl py-1">{komen.notes}</h4>   
+                      </div>
+                            
+                      )
+            })
+        }
+        
+        <h4 className="text-black font-medium text-xl py-2 ">{lokasi}</h4>
         <div className="w-[450px] h-[200px] border-2 ml-auto">
           <h3 className="text-black font-medium text-2xl pl-10">
             Rp.{harga} / Night
@@ -78,7 +91,7 @@ const homeDetail = ({
                 value="2018-07-22"
                 min="2018-01-01"
                 max="2018-12-31"
-                className=" text-black"
+                className=" text-black bg-white"
                 onChange={checkin}
               ></input>
             </div>
@@ -93,7 +106,7 @@ const homeDetail = ({
                 value="2018-07-22"
                 min="2018-01-01"
                 max="2018-12-31"
-                className=" text-black"
+                className=" text-black bg-white"
                 onChange={checkout}
               ></input>
             </div>

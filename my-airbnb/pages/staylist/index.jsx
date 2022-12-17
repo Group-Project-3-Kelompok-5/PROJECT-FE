@@ -50,7 +50,7 @@ const StayList = () => {
           <div className="hidden lg:inline-flex mb-4 space-x-3 text-gray-800 whitespace-nowrap">
             <p className="buttons">Cancel your order</p>
             <p className="buttons">Rooms</p>
-            <p className="buttons">HEHE HAHA</p>
+            <p className="buttons">Saya Mau Kaya</p>
             <p className="buttons">Discount Price</p>
           </div>
         </div>
@@ -76,9 +76,6 @@ const StayList = () => {
               alt=""
             />
           </div>
-        </div>
-        <div className="hidden lg:inline-flex w-[50%] bg-white">
-          <img src="/MapsList.jpg" className='object-cover rounded-xl' alt="Maps" />
         </div>
       </div>
     </>
