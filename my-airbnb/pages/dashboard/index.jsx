@@ -34,7 +34,7 @@ const Dashboard = () => {
             <p className="text-white text-md md:text-xl xl:text-2xl mb-4">
               Discover your next Travel
             </p>
-            <button className="text-white bg-black px-10 py-4 rounded-full shadow-md font-bold hover:shadow-xl active:scale-90 transition duration-200">
+            <button onClick={() => router.push('/staylist')} className="text-white bg-black px-10 py-4 rounded-full shadow-md font-bold hover:shadow-xl active:scale-90 transition duration-200">
               Find a new Heaven
             </button>
           </div>

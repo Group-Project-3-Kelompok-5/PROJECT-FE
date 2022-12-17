@@ -45,6 +45,7 @@ const Detailhomestay = () => {
     get_Details();
   }, []);
 
+
   return (
     <div className="bg-white h-full w-full">
       <Head>
@@ -58,56 +59,23 @@ const Detailhomestay = () => {
         history={() => router.push(`/${name}/history`)}
       />
       <div>
-        {homestayDetail && (
+        {homestayDetail ?
           <HomeDetail
             title={homestayDetail.Title}
             deskripsi={homestayDetail.Description}
             lokasi={homestayDetail.Address}
             harga={homestayDetail.Price}
-            komentar={"kolom komentar"}
+            komentar={homestayDetail.Comments}
             gambar={homestayDetail.Images}
             order={() => check()}
             checkin={(e) => setCheckin(e.target.value)}
             checkout={(e) => setCheckout(e.target.value)}
           />
-        )}
+          :
+          <p className="text-black text-5xl">Loading</p>
+        }
       </div>
-      <div>
-        <label for="start" className="text-black">
-          Checkin:
-        </label>
-        <input
-          type="date"
-          id="start"
-          name="trip-start"
-          min="2018-01-01"
-          max="2025-12-31"
-          data-date-format="DD MMMM YYYY"
-          className=" text-black"
-          onChange={(e) => setCheckin(e.target.value)}
-        ></input>
-      </div>
-      <div className="w-1/2 ml-2">
-        <label for="start" className="text-black">
-          Checkout:
-        </label>
-        <input
-          type="date"
-          id="start"
-          name="trip-start"
-          min="2018-01-01"
-          max="2025-12-31"
-          data-date-format="DD MMMM YYYY"
-          className=" text-black"
-          onChange={(e) => setCheckout(e.target.value)}
-        ></input>
-      </div>
-      <button
-        className="bg-black p-3 rounded-xl font-bold mt-10 w-36"
-        onClick={() => orderHomestay()}
-      >
-        Order
-      </button>
+
     </div>
   );
 };
